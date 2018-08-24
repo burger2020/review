@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    app:cardCornerRadius="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardElevation="0dp">
+    <LinearLayout
+        android:id="@+id/productContainer"
+        android:background="@drawable/product_rect"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/productImage"
+                android:background="@color/gray0_5"
+                android:padding="1dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:hint="상품명"
+                        android:textSize="13dp"
+                        android:id="@+id/productName"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textSize="10dp"
+                        android:id="@+id/productPrice"
+                        android:hint="정가"
+                        android:textColor="@color/gray5"
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <TextView
+                    android:textSize="10dp"
+                    android:id="@+id/productCompany"
+                    android:text="판매사"
+                    android:textColor="@color/gray5"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <android.support.v7.widget.RecyclerView
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/productTagList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+                </android.support.v7.widget.RecyclerView>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RatingBar
+                        android:rating="1"
+                        android:numStars="1"
+                        android:progressTint="@color/colorPrimary"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:textSize="12dp"
+                        android:text="0.0"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/productRatingPoint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/gray0_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <TextView
+            android:textSize="11dp"
+            android:layout_marginBottom="3dp"
+            android:gravity="right"
+            android:text="상품 자세히"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

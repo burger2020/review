@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Dialog.ProfileDialog">
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_margin="15dp"
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:background="@color/colorProgressBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+</LinearLayout>

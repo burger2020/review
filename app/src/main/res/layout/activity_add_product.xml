@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BottomNavPage.AddProduct">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/pImage"
+            android:background="@color/gray5"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+        <Button
+            android:layout_marginLeft="50dp"
+            android:id="@+id/pImageSelect"
+            android:text="사진선택"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <EditText
+        android:inputType="text"
+        android:id="@+id/pName"
+        android:hint="제품 이름"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:inputType="number"
+        android:id="@+id/pPrice"
+        android:hint="제품 가격"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/pTag"
+        android:hint="태그 (,로 구분)"
+        android:inputType="text"
+        android:gravity="top|left"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <EditText
+        android:id="@+id/pCompany"
+        android:hint="판매사 (번호 코드)"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:inputType="number"
+        android:layout_margin="5dp"
+        android:text="@string/companyList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <Button
+        android:enabled="false"
+        android:id="@+id/successButton"
+        android:layout_margin="10dp"
+        android:text="완료"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

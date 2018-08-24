@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "208693905642",
+    "firebase_url": "https://condom-55a91.firebaseio.com",
+    "project_id": "condom-55a91",
+    "storage_bucket": "condom-55a91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208693905642:android:761a31ebf890351e",
+        "android_client_info": {
+          "package_name": "condom.best.condom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208693905642-i0hpn62j6og2sckcev8k9k6o1epbqj8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "condom.best.condom",
+            "certificate_hash": "b89ebfee50de3c9c36dad652c050a721e888fdb7"
+          }
+        },
+        {
+          "client_id": "208693905642-0201f8hrvlvsbl0bfvkli6fo2li1kg3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8ib-7QJMNKATHThltqE-xKjOkmb_ddFk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208693905642-0201f8hrvlvsbl0bfvkli6fo2li1kg3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

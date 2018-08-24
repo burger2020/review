@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray1"
+    tools:context=".BottomNavPage.Product.ProductReviewFragment">
+    <ScrollView
+        android:scrollbars="none"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <ImageView
+                    android:id="@+id/prodImageSecondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:background="@color/grayAlpha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/prodImage"
+                    android:background="@color/gray9"
+                    android:src="@color/white"
+                    android:padding="1dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/prodName"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="제품명"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/prodCompany"
+                android:layout_marginTop="3dp"
+                android:textSize="13dp"
+                android:textColor="@color/gray5"
+                android:text="제조사"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/proTagList"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="25dp" />
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RatingBar
+                    android:id="@+id/prodRating"
+                    android:stepSize="0.1"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/prodRatingPoint"
+                    android:text="평점0.0 (0명)"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <LinearLayout
+                    android:id="@+id/ratingButton"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        android:textSize="20dp"
+                        android:text="0.0"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/ratingPointText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/ratingIcon"
+                        android:src="@drawable/ic_rating"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:id="@+id/ratingSetText"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:hint="@string/weight"
+                        android:text="@string/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/reviewButton"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/reviewRegitIcon"
+                        android:background="@drawable/ic_review"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:id="@+id/reviewSetText"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:hint="@string/weight"
+                        android:text="@string/review_regit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/wishButton"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/wishIcon"
+                        android:background="@drawable/ic_wish"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:id="@+id/wishText"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:hint="@string/weight"
+                        android:text="@string/wishlist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--유저 리뷰-->
+            <com.github.aakira.expandablelayout.ExpandableLinearLayout
+                android:paddingBottom="8dp"
+                android:id="@+id/userCommentView"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:paddingBottom="8dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/gray1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:id="@+id/userCommentView1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_user"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <TextView
+                        android:layout_marginRight="30dp"
+                        android:textColor="@color/black"
+                        android:id="@+id/userCommentText"
+                        android:layout_weight="1"
+                        android:text="comment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/userCommentView2"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginRight="16dp"
+                        android:id="@+id/reviewRemove"
+                        android:textSize="12dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/remove"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/reviewCustom"
+                        android:textSize="12dp"
+                        android:gravity="right"
+                        android:text="@string/custom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+            <View
+                android:background="@color/gray0_5"
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+            <!--제품 정보-->
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="@string/product_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/product_info_more"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/product_info_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gray9"
+                android:textSize="13dp"
+                android:lineSpacingExtra="6dp"
+                android:text="판매 단위 - 3p/12p/100p\n초박형이고 젤이 다량 함류된 오카모토의 콘돔이다.
+\n전성분 - ㄴㅇ라ㅣㄴ라ㅣㅁ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:background="@color/gray0_5"
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/reviewNum"
+                    android:text="@string/review"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/product_review_more"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/product_review_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ReviewList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

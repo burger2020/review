@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BottomNavPage.Adapter.ProductReviewListAdapter"
+    android:layout_margin="8dp"
+    app:cardElevation="0dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:background="@drawable/product_rect"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="8dp"
+            android:gravity="center_vertical|top"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/reviewerProfile"
+                android:src="@drawable/ic_user"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/reviewerName"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:text="name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/reviewDate"
+                    android:text="0000.00.00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/reviewComment"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:text="리뷰 코멘트"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/reviewRating"
+                android:textSize="20dp"
+                android:textColor="@color/colorPrimary"
+                android:text="0.0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/gray0_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/likeButton"
+                android:layout_marginLeft="8dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_like"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:id="@+id/listNumText"
+                android:textColor="@color/black"
+                android:layout_marginLeft="-4dp"
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/reviewCommentButton"
+                android:textColor="@color/black"
+                android:layout_marginLeft="20dp"
+                android:text="댓글"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginLeft="-4dp"
+                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="10dp"
+                android:text="부적절함"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

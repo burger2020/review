@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#aaaaaa"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sign.LogInActivity">
+    <LinearLayout
+        android:id="@+id/signContainer"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@drawable/sign_up_button_facebook"
+            android:id="@+id/facebookSignUnButton"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal" >
+            <ImageView
+                android:layout_margin="12dp"
+                android:src="@drawable/com_facebook_button_icon_white"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_marginRight="32dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="페이스북으로 가입 / 로그인"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:background="@drawable/sign_up_button"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="이메일로 회원가입"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <ImageView
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_email"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:layout_marginRight="32dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="이메일로 가입"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <TextView
+            android:layout_marginBottom="30dp"
+            android:textSize="14dp"
+            android:textColor="#ffffff"
+            android:id="@+id/signIpButton"
+            android:text="@string/alreadySignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

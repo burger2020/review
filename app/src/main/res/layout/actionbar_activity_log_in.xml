@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize">
+    <ImageView
+        android:layout_marginLeft="-10dp"
+        android:id="@+id/action_bar_back_key"
+        android:src="@drawable/ic_back"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+    <TextView
+        android:textSize="@dimen/action_bar_text_size"
+        android:id="@+id/action_bar_text"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    tools:context=".BottomNavPage.Adapter.SearchListAdapter">
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:hint="검색 기록"
+        android:id="@+id/searchListText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>
