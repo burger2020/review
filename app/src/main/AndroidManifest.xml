@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="condom.best.condom">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,14 +14,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.CustomStatus">
         <activity
-            android:name=".MainActivity"
+            android:name=".View.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomStatus"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,26 +50,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Sign.LogInActivity"
+            android:name=".View.Sign.LogInActivity"
             android:theme="@style/AppTheme.CustomStatus" />
-        <activity android:name=".Sign.SignInActivity" />
-        <activity android:name=".Sign.SignUpActivity" />
-        <activity android:name=".Sign.PasswordActivity" />
-        <activity android:name=".FirstSettingActivity" />
-        <activity android:name=".SecondSettingActivity" />
-        <activity android:name=".Dialog.ProfileDialog" />
+        <activity android:name=".View.Sign.SignInActivity" />
+        <activity android:name=".View.Sign.SignUpActivity" />
+        <activity android:name=".View.Sign.PasswordActivity" />
+        <activity android:name=".View.FirstSettingActivity" />
+        <activity android:name=".View.SecondSettingActivity" />
+        <activity android:name=".View.Dialog.ProfileDialog" />
         <activity
-            android:name=".BottomNavPage.AddProduct"
+            android:name=".View.BottomNavPage.AddProduct"
             android:theme="@style/AppTheme.CustomStatus" />
         <activity android:name=".BottomNavPage.Adapter.SearchListAdapter" />
-        <activity android:name=".Dialog.RatingDialog" />
+        <activity android:name=".View.Dialog.RatingDialog" />
         <activity
             android:name=".BottomNavPage.Product.ReviewActivity"
             android:theme="@style/AppTheme.CustomStatus" />
         <activity
             android:name=".BottomNavPage.Product.ProductInfoMore"
             android:theme="@style/AppTheme.CustomStatus" />
-        <activity android:name=".BottomNavPage.Adapter.ProductReviewListAdapter"></activity>
+        <activity android:name=".View.BottomNavPage.Adapter.ProductReviewListAdapter" />
+        <activity
+            android:name=".View.BottomNavPage.MyPage.NameCustomActivity"
+            android:theme="@style/AppTheme.CustomStatus" />
+        <activity
+            android:name=".BottomNavPage.Product.PhotoViewActivity"
+            android:theme="@style/AppTheme.CustomStatus" />
+        <activity android:name=".View.BottomNavPage.Adapter.TagAdapter" />
+        <activity android:name=".View.BottomNavPage.Column.ColumnAddActivity"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>

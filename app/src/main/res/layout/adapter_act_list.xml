@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_margin="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@color/gray1"
+            android:id="@+id/actListImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+        <LinearLayout
+            android:padding="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_marginStart="5dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:textColor="@color/black"
+                    android:id="@+id/actNameText"
+                    android:text="제품명"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginBottom="4dp"
+                    android:textSize="12dp"
+                    android:gravity="left"
+                    android:id="@+id/actCompanyText"
+                    android:text="제조사"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <Space
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+            <RatingBar
+                android:id="@+id/actRatingStar"
+                android:layout_marginStart="4dp"
+                android:rating="1"
+                android:numStars="1"
+                android:progressTint="@color/colorPrimary"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/actRatingPoint"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/colorPrimary"
+                android:text="0.0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

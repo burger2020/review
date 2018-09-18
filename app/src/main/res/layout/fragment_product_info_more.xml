@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BottomNavPage.Product.ProductInfoMore"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/rating_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:elevation="0dp"
+            android:id="@+id/toolbar_rating"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="제품 정보"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_marginLeft="80dp"
+            android:background="@color/gray0_5"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="제품명"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreName"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="제품명"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="제조사"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreCompany"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="제조사"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="제조국가"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreCountry"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="제조국가"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="태그"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreTag"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="태그"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="판매 단위"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreUnit"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="판매 단위"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="제품 특징"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreFeature"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="제품 특징"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="제품 특징"
+                    android:hint="전성분"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreIngredient"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:text="전성분"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

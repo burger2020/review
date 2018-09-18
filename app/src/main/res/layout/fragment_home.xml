@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".BottomNavPage.HomeFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
         <LinearLayout
+            android:scrollbars="none"
             android:focusable="true"
             android:focusableInTouchMode="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -49,7 +50,7 @@
                 <TextView
                     android:gravity="center_vertical"
                     android:id="@+id/searchProd"
-                    android:paddingLeft="50dp"
+                    android:paddingStart="50dp"
                     android:hint="제품 검색"
                     android:textSize="15dp"
                     android:textColorHint="@color/gray5"
@@ -61,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
                 <ImageView
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="25dp"
                     android:layout_centerVertical="true"
                     android:background="@drawable/ic_search"
                     android:layout_width="20dp"
@@ -72,7 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
                 <android.support.v7.widget.RecyclerView
-                    android:background="@color/gray0"
+                    tools:listitem="@layout/adapter_home_list"
+                    android:background="@color/backgroundColor"
                     android:id="@+id/productList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -80,7 +82,7 @@
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/addProduct"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_margin="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

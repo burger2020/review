@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray1"
-    tools:context=".BottomNavPage.Product.ProductReviewFragment">
+    tools:context=".View.BottomNavPage.Product.ProductReviewFragment">
     <ScrollView
         android:scrollbars="none"
         android:background="@color/white"
@@ -121,29 +121,6 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/reviewButton"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:id="@+id/reviewRegitIcon"
-                        android:background="@drawable/ic_review"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-                    <TextView
-                        android:id="@+id/reviewSetText"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:hint="@string/weight"
-                        android:text="@string/review_regit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
                     android:id="@+id/wishButton"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -166,10 +143,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/reviewButton"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/reviewRegitIcon"
+                        android:background="@drawable/ic_review"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <TextView
+                        android:id="@+id/reviewSetText"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:hint="@string/weight"
+                        android:text="@string/review_regit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
             <!--유저 리뷰-->
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
-                android:paddingBottom="8dp"
                 android:id="@+id/userCommentView"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -183,42 +182,41 @@
                 <LinearLayout
                     android:id="@+id/userCommentView1"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="80dp">
                     <ImageView
+                        android:id="@+id/userCommentViewProfile"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:src="@drawable/ic_user"
+                        android:background="@drawable/ic_user"
                         android:layout_width="40dp"
                         android:layout_height="40dp" />
                     <TextView
-                        android:layout_marginRight="30dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:paddingBottom="24dp"
                         android:textColor="@color/black"
                         android:id="@+id/userCommentText"
                         android:layout_weight="1"
                         android:text="comment"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/userCommentView2"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <TextView
-                        android:layout_marginRight="16dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="11dp"
                         android:id="@+id/reviewRemove"
                         android:textSize="12dp"
-                        android:layout_weight="1"
                         android:gravity="right"
+                        android:layout_gravity="bottom"
                         android:text="@string/remove"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
-                        android:layout_marginRight="10dp"
+                        android:layout_gravity="bottom"
+                        android:padding="5dp"
+                        android:layout_marginRight="5dp"
                         android:id="@+id/reviewCustom"
                         android:textSize="12dp"
                         android:gravity="right"
@@ -227,6 +225,16 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+            <!--<View-->
+            <!--android:background="@color/gray0_5"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="8dp" />-->
+            <!--&lt;!&ndash;제품 평점 그래프&ndash;&gt;-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--</LinearLayout>-->
+
             <View
                 android:background="@color/gray0_5"
                 android:layout_width="match_parent"
@@ -255,13 +263,33 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <TextView
+                android:id="@+id/unitText"
+                android:text="판매 단위"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/gray9"
                 android:textSize="13dp"
                 android:lineSpacingExtra="6dp"
-                android:text="판매 단위 - 3p/12p/100p\n초박형이고 젤이 다량 함류된 오카모토의 콘돔이다.
-\n전성분 - ㄴㅇ라ㅣㄴ라ㅣㅁ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/featureText"
+                android:text="제품 정보"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gray9"
+                android:textSize="13dp"
+                android:lineSpacingExtra="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ingredientText"
+                android:text="제품 성분"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gray9"
+                android:textSize="13dp"
+                android:lineSpacingExtra="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
@@ -291,10 +319,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/ReviewList"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/ReviewList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="@dimen/emptyViewTextSize"
+                    android:gravity="center"
+                    android:text="첫리뷰를 등록해 주세요!"
+                    android:visibility="gone"
+                    android:id="@+id/emptyView"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

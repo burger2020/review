@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">CONDOM</string>
+    <string name="app_name">리뷰</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="firebase_storage_id">gs://condom-55a91</string>
 
     <string name="facebook_app_id">412623272561672</string>
     <string name="fb_login_protocol_scheme">fb412623272561672</string>
@@ -36,19 +37,24 @@
     <!--sharedPreference-->
     <string name="firstUser">firstUser</string>
     <string name="profileImage">프로필</string>
-    <string name="infoText1">상품 리뷰작성을 위해서 기본정보를 입력해 주세요.</string>
+    <string name="infoText1">상품 리뷰작성을 위해서 프로필 입력해 주세요.</string>
+
+    <string name="userProfileChange">UserProfileChange</string>
 
     <string name="profileDialogText">프로필 사진 변경</string>
     <string name="profileDialogText1">사진 찍기</string>
     <string name="profileDialogText2">갤러리에서 선택</string>
+    <string name="profileDialogText3">기본 이미지로 변경</string>
+    <string name="profileDialogText4">이미지 크게보기</string>
+    <string name="profileDialogText5">이름 변경</string>
     <string name="limitSelectMessage">한개의 사진만 선택할 수 있습니다.</string>
     <string name="selectDone">선택</string>
     <string name="album">앨범</string>
     <string name="galleries">갤러리</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">나</string>
+    <string name="title_home">홈</string>
+    <string name="title_dashboard">태그</string>
+    <string name="title_notifications">팁</string>
     <string name="title_myPage">내 정보</string>
     <string name="companyList">1.오카모토 / 2.듀렉스 / 3.사가미 / 4.플레이보이 / 5.듀오 /
         6.유니더스 / 7.바른생각 / </string>
@@ -68,6 +74,15 @@
     <string name="reviewRegist">리뷰 등록</string>
     <string name="custom">수정</string>
     <string name="remove">삭제</string>
-    <string name="userListNum">써본 리스트</string>
+    <string name="userListNum">평가 리스트</string>
     <string name="wishListNum">위시 리스트</string>
+    <string name="review_list">리뷰</string>
+    <string name="facebookSignUpBtn">페이스북으로 가입 / 로그인</string>
+    <string name="emailSignUp">이메일로 가입</string>
+    <string name="ratingList">평가 리스트</string>
+    <string name="wishList">위시 리스트</string>
+    <string name="reviewList">리뷰 리스트</string>
+    <string name="emptyList">목록이 없습니다!</string>
+    <string name="sexlifeTip">성생활 팁</string>
+    <string name="searchTag">태그 검색</string>
 </resources>

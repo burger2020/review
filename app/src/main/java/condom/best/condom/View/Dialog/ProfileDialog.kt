@@ -1,4 +1,4 @@
-package condom.best.condom.Dialog
+package condom.best.condom.View.Dialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -43,8 +43,20 @@ class ProfileDialog(context: Context, private val count: Int) : BaseAdapter() {
                 viewHolder.textView.text = context.getString(R.string.profileDialogText1)
                 viewHolder.view.visibility = View.GONE
             }
-            else -> {
+            2 -> {
                 viewHolder.textView.text = context.getString(R.string.profileDialogText2)
+                viewHolder.view.visibility = View.GONE
+            }
+            3 -> {
+                viewHolder.textView.text = context.getString(R.string.profileDialogText3)
+                viewHolder.view.visibility = View.GONE
+            }
+            4 -> {
+                viewHolder.textView.text = context.getString(R.string.profileDialogText4)
+                viewHolder.view.visibility = View.GONE
+            }
+            else -> {
+                viewHolder.textView.text = context.getString(R.string.profileDialogText5)
                 viewHolder.view.visibility = View.GONE
             }
         }

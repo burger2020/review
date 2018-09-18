@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".View.BottomNavPage.TagFragment"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:elevation="0dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/toolbar_rating"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/searchTag"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tagListView"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+    <View
+        android:background="@color/gray0_5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:clickable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:enabled="false"
+            android:id="@+id/tagListRefresh"
+            android:textColor="@color/gray1"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="초기화"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <View
+            android:background="@color/gray0_5"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:clickable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:enabled="false"
+            android:id="@+id/tagListSearch"
+            android:textColor="@color/gray1"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="검색"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

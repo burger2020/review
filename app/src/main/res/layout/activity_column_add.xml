@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.BottomNavPage.Column.ColumnAddActivity">
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/cImage"
+                android:background="@color/gray5"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+            <Button
+                android:layout_marginStart="50dp"
+                android:id="@+id/cImageSelect"
+                android:text="사진선택"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <EditText
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:id="@+id/cName"
+            android:hint="칼럼 제목"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/cTag"
+            android:hint="태그 (.로 구분)"
+            android:inputType="text"
+            android:gravity="top|left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Button
+        android:enabled="false"
+        android:id="@+id/successButtonC"
+        android:text="완료"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

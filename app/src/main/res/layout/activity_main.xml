@@ -7,14 +7,13 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-    <Button
-        android:visibility="gone"
-        android:text="설정"
-        android:id="@+id/reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+    tools:context=".View.MainActivity">
+    <!--<Button-->
+    <!--android:visibility="visible"-->
+    <!--android:text="설정"-->
+    <!--android:id="@+id/reset"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
     <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -26,13 +25,13 @@
             android:orientation="vertical" />
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/bottomNavPageContainerDashboard"
+            android:id="@+id/bottomNavPageContainerTag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" />
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/bottomNavPageContainerAlarm"
+            android:id="@+id/bottomNavPageContainerColumn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" />

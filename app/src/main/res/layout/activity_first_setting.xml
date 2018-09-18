@@ -1,134 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FirstSettingActivity"
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:gravity="center_horizontal">
-    <TextView
-        android:textColor="@color/black"
-        android:textSize="14dp"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/infoText1"
+<layout>
+    <data>
+        <variable
+            name="firstSet"
+            type="condom.best.condom.View.FirstSettingViewModel"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/profileImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <RelativeLayout
-        android:id="@+id/userProfileImg"
-        android:layout_width="80dp"
-        android:layout_height="80dp">
-        <ImageView
-            android:id="@+id/userProfileImageView"
-            android:src="@drawable/ic_user"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".View.FirstSettingActivity"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/rating_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:elevation="0dp"
+            android:theme="@style/AppTheme.AppBarOverlay">
+            <android.support.v7.widget.Toolbar
+                android:elevation="0dp"
+                android:id="@+id/toolbar_rating"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/white"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+                <TextView
+                    android:textSize="@dimen/action_bar_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:text="@string/profileImage"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/infoText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:onClick="@{()->firstSet.profileChange()}"
             android:layout_width="80dp"
-            android:layout_height="80dp" />
-        <ImageView
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_edit"
-            android:layout_alignParentRight="true"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-    </RelativeLayout>
-    <TextView
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:text="성별"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/userGenderW"
-            android:text="@string/female"
-            android:layout_width="wrap_content"
+            android:layout_height="80dp">
+            <ImageView
+                android:id="@+id/profileImg"
+                android:src="@drawable/ic_user"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+            <ImageView
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_edit"
+                android:layout_alignParentRight="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:text="성별"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:checked="@{firstSet.femaleCheck}"
+                android:onClick="@{()->firstSet.femaleSet()}"
+                android:text="@string/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:checked="@{firstSet.maleCheck}"
+                android:onClick="@{()->firstSet.maleSet()}"
+                android:text="@string/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:text="@={firstSet.userName}"
+                app:met_primaryColor="@color/black"
+                android:textSize="14dp"
+                app:met_floatingLabel="normal"
+                android:inputType="text"
+                android:theme="@style/EditTextStyle"
+                android:hint="@string/name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <ImageView
+                android:visibility="@{firstSet.nameTxtCheckImg}"
+                android:id="@+id/checkName"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_check"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:text="@={firstSet.userBirthTxt}"
+                android:onClick="@{()->firstSet.setBirth()}"
+                android:focusable="false"
+                app:met_baseColor="@color/black"
+                android:textSize="14dp"
+                android:hint="생일"
+                app:met_floatingLabel="normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:visibility="@{firstSet.birthTxtCheckImg}"
+                android:id="@+id/checkBirth"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_check"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
         <Space
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/userGenderM"
-            android:text="@string/male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <Button
+            android:onClick="@{()->firstSet.successBtnClick()}"
+            android:background="@{firstSet.successBtnImg}"
+            android:enabled="@{firstSet.successEnable}"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:text="다음"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
     </LinearLayout>
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/userNameText"
-            app:met_primaryColor="@color/black"
-            android:textSize="14dp"
-            app:met_floatingLabel="normal"
-            android:inputType="text"
-            android:theme="@style/EditTextStyle"
-            android:hint="@string/name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-        <ImageView
-            android:visibility="invisible"
-            android:id="@+id/checkName"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_check"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/userBirth"
-            android:focusable="false"
-            app:met_baseColor="@color/black"
-            android:textSize="14dp"
-            android:hint="생일"
-            app:met_floatingLabel="normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:visibility="invisible"
-            android:id="@+id/checkBirth"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_check"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
-    </RelativeLayout>
-    <Space
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-    <Button
-        android:background="@drawable/sign_up_success_non_button"
-        android:enabled="false"
-        android:textColor="@color/white"
-            android:id="@+id/nextButton"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        android:text="다음"
-        android:layout_width="match_parent"
-        android:layout_height="44dp" />
-</LinearLayout>
+</layout>

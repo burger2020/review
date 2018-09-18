@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.BottomNavPage.MyPage.NameCustomActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/rating_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:elevation="0dp"
+            android:id="@+id/toolbar_rating"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <ImageView
+                android:id="@+id/nameCustomBackBtn"
+                android:src="@drawable/ic_back"
+                android:layout_gravity="left"
+                android:layout_width="20dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="이름 변경"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/nameCustomSuccessBtn"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_success"
+                android:layout_gravity="right"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <EditText
+        android:id="@+id/customNameText"
+        android:lines="1"
+        android:layout_margin="20dp"
+        android:hint="변경할 이름"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+</LinearLayout>

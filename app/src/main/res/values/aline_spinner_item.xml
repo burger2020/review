@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerArray">
+        <item> 좋아요 순 </item>
+        <item> 최신 순 </item>
+        <item> 오래된 순 </item>
+    </string-array>
+    <string-array name="ratingListSortArray">
+        <item> 최신 순 </item>
+        <item> 오래된 순 </item>
+        <item> 별점 높은 순 </item>
+        <item> 별점 낮은 순 </item>
+    </string-array>
+    <string-array name="wishListSortArray">
+        <item> 최신 순 </item>
+        <item> 오래된 순 </item>
+    </string-array>
+    <string-array name="reviewListSortArray">
+        <item> 최신 순 </item>
+        <item> 오래된 순 </item>
+    </string-array>
+</resources>
