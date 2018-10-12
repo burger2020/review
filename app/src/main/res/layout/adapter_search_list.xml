@@ -7,6 +7,10 @@
     android:layout_margin="5dp"
     tools:context=".BottomNavPage.Adapter.SearchListAdapter">
     <TextView
+        android:layout_marginRight="20dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="검색 기록"
         android:textColor="@color/black"
         android:textSize="14dp"
         android:hint="검색 기록"

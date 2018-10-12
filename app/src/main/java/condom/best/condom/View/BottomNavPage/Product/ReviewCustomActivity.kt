@@ -4,18 +4,21 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import condom.best.condom.Data.StringData.Companion.RATING_POINT
-import condom.best.condom.Data.StringData.Companion.REVIEW
-import condom.best.condom.Data.StringData.Companion.USER_COMMENT
+import condom.best.condom.View.Data.StringData.Companion.RATING_POINT
+import condom.best.condom.View.Data.StringData.Companion.REVIEW
+import condom.best.condom.View.Data.StringData.Companion.USER_COMMENT
 import condom.best.condom.R
-import kotlinx.android.synthetic.main.activity_review.*
+import condom.best.condom.View.Data.StringData.Companion.PROFILE_OPEN_CHECKED
+import kotlinx.android.synthetic.main.activity_review_custom.*
 
 
-class ReviewActivity : AppCompatActivity() {
+@Suppress("DEPRECATION")
+class ReviewCustomActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_review)
+        setContentView(R.layout.activity_review_custom)
+
         val intent = intent
         val comment = intent.getStringExtra(USER_COMMENT)
         val ratingPoint = intent.getFloatExtra(RATING_POINT,0f)
@@ -28,8 +31,8 @@ class ReviewActivity : AppCompatActivity() {
         reviewRatingBar.rating = ratingPoint
         reviewText.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
-                //입력 하면 완료버튾 활성화
-                if(p0!!.isNotEmpty()&&SpaceCheck(p0.toString())){
+                //입력 하면 완료버튼 활성화
+                if(p0!!.isNotEmpty()&&spaceCheck(p0.toString())){
                     reviewSuccess.background = resources.getDrawable(R.drawable.ic_success_ok)
                     reviewSuccess.isEnabled = true
                 }
@@ -41,19 +44,20 @@ class ReviewActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
-        searchBackBtn.setOnClickListener {
+
+        searchBackBtn.setOnClickListener {//백버튼
             finish()
         }
-        //리뷰 달기
-        reviewSuccess.setOnClickListener {
-            val intent = intent
+
+        reviewSuccess.setOnClickListener {//리뷰 달기
             intent.putExtra(REVIEW,reviewText.text.toString())
             intent.putExtra(RATING_POINT,reviewRatingBar.rating)
+            intent.putExtra(PROFILE_OPEN_CHECKED,!profileOpenCheckBox.isChecked)
             setResult(123,intent)
             finish()
         }
     }
-    private fun SpaceCheck(s : String) : Boolean{
+    private fun spaceCheck(s : String) : Boolean{
         for (i in 0 until s.length)
             if(s[i]!=' ' && s[i]!='\n')
                 return true

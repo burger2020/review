@@ -1,113 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <data>
-        <variable
-            name="signUp"
-            type="condom.best.condom.View.Sign.SignUpViewModel"/>
-    </data>
-    <LinearLayout
-        android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Sign.SignUpActivity"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/rating_appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".View.Sign.SignUpActivity"
-        android:orientation="vertical">
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/rating_appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
             android:elevation="0dp"
-            app:elevation="0dp"
-            android:theme="@style/AppTheme.AppBarOverlay">
-            <android.support.v7.widget.Toolbar
-                android:elevation="0dp"
-                android:id="@+id/toolbar_rating"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@color/white"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-                <ImageView
-                    android:onClick="@{() -> signUp.backButton()}"
-                    android:src="@drawable/ic_back"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
-                <TextView
-                    android:textSize="@dimen/action_bar_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"
-                    android:text="@string/signUp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
-        <LinearLayout
+            android:id="@+id/toolbar_rating"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <ImageView
+                android:id="@+id/backBtn"
+                android:src="@drawable/ic_back"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:textSize="@dimen/action_bar_text_size"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="@string/signUp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/emailText"
+            android:textSize="14dp"
+            android:inputType="textEmailAddress"
+            android:theme="@style/EditTextStyle"
+            android:hint="@string/email_hint"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/passText"
+            android:textSize="14dp"
+            android:inputType="textPassword"
+            android:theme="@style/EditTextStyle"
+            android:hint="@string/password_hint"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            tools:text="@tools:sample/cities" />
+        <EditText
+            android:id="@+id/passCText"
+            android:textSize="14dp"
+            android:inputType="textPassword"
+            android:theme="@style/EditTextStyle"
+            android:hint="@string/password_confirm_hint"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <CheckBox
+            android:id="@+id/signUpCheckBox"
             android:gravity="center"
+            android:textSize="12dp"
+            android:text="개인정보 수집, 이용 및 서비스 이용약관에 동의합니다."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:enabled="false"
+            android:background="@drawable/sign_up_success_non_button"
+            android:id="@+id/signUpBtn"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:orientation="vertical"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:text="@string/signUpSuccess"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <EditText
-                android:text="@={signUp.emailText}"
-                android:drawableRight="@{signUp.emailTextChImg}"
-                android:textSize="14dp"
-                android:inputType="textEmailAddress"
-                android:theme="@style/EditTextStyle"
-                android:hint="@string/email_hint"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-            <EditText
-                android:text="@={signUp.passText}"
-                android:drawableRight="@{signUp.passTextChImg}"
-                android:textSize="14dp"
-                android:inputType="textPassword"
-                android:theme="@style/EditTextStyle"
-                android:hint="@string/password_hint"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
-            <EditText
-                android:text="@={signUp.passCText}"
-                android:drawableRight="@{signUp.passCChImg}"
-                android:textSize="14dp"
-                android:inputType="textPassword"
-                android:theme="@style/EditTextStyle"
-                android:hint="@string/password_confirm_hint"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
-            <Space
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
-            <CheckBox
-                android:checked="@={signUp.signUpIsCheck}"
-                android:onClick="@{()->signUp.signUpCheck()}"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:text="개인정보 수집, 이용 및 서비스 이용약관에 동의합니다."
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:background="@{signUp.signUpBtnImg}"
-                android:enabled="@{signUp.signUpBtnEnable}"
-                android:textColor="@color/white"
-                android:onClick="@{()->signUp.signUpBtnClick()}"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="14dp"
-                android:textStyle="bold"
-                android:text="@string/signUpSuccess"
-                android:layout_width="match_parent"
-                android:layout_height="44dp" />
-        </LinearLayout>
+            android:layout_height="44dp" />
     </LinearLayout>
-</layout>
+</LinearLayout>

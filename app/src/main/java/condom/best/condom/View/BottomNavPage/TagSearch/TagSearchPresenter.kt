@@ -9,7 +9,7 @@ class TagSearchPresenter: TagSearchContract.Presenter,ListCallBack {
         repository = TagSearchRepository()
         getProdLst(tagList)
     }
-    fun getProdLst(tagList: ArrayList<String>) {
+    private fun getProdLst(tagList: ArrayList<String>) {
         repository.initData(tagList,this)
     }
     override lateinit var view: TagSearchFragment

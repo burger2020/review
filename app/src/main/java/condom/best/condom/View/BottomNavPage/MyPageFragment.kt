@@ -31,14 +31,18 @@ import condom.best.condom.View.BindingAdapter.ProfileOption
 import condom.best.condom.View.BottomNavPage.MyPage.ActMoreFragment
 import condom.best.condom.View.BottomNavPage.MyPage.NameCustomActivity
 import condom.best.condom.View.Data.GlideApp
+import condom.best.condom.View.Data.UserInfo
+import condom.best.condom.View.Data.UserLocalDataPath.Companion.USER_INFO_PATH
 import condom.best.condom.View.Dialog.ProfileDialog
 import condom.best.condom.View.MainActivity
 import condom.best.condom.View.MainActivity.Companion.currentUser
 import condom.best.condom.View.MainActivity.Companion.db
+import condom.best.condom.View.MainActivity.Companion.gson
 import condom.best.condom.View.MainActivity.Companion.localDataGet
 import condom.best.condom.View.MainActivity.Companion.localDataPut
 import condom.best.condom.View.MainActivity.Companion.storage
 import condom.best.condom.View.MainActivity.Companion.userActInfo
+import condom.best.condom.View.MainActivity.Companion.userInfo
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import java.io.ByteArrayOutputStream
@@ -107,6 +111,9 @@ class MyPageFragment : Fragment() {
                                 }
                                 3 -> { //기본 이미지로 변경
                                     val index = localDataGet.getInt(getString(R.string.userProfileChange),0)+1
+                                    userInfo.profileUri = "none"
+                                    val strContact = gson.toJson(userInfo, UserInfo::class.java)
+                                    localDataPut.putString(USER_INFO_PATH, strContact)
                                     localDataPut.putInt(getString(R.string.userProfileChange),index)
                                     localDataPut.commit()
                                     GlideApp.with(context!!)
@@ -143,15 +150,15 @@ class MyPageFragment : Fragment() {
 
         rootView.ratingListMore.setOnClickListener {//평가
             (activity as MainActivity).actMoreFragment = ActMoreFragment.newInstance(RATING)
-            FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
+            FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
         }
         rootView.wishListMore.setOnClickListener {//위시
             (activity as MainActivity).actMoreFragment = ActMoreFragment.newInstance(WISH)
-            FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
+            FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
         }
         rootView.reviewMore.setOnClickListener {//리뷰 리스트
             (activity as MainActivity).actMoreFragment = ActMoreFragment.newInstance(REVIEW)
-            FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
+            FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).actMoreFragment,"MY")
         }
         return rootView
     }
@@ -174,6 +181,9 @@ class MyPageFragment : Fragment() {
             val profileUpdates = UserProfileChangeRequest.Builder()
                     .setDisplayName(name)
                     .build()
+            userInfo.name = name
+            val strContact = gson.toJson(userInfo, UserInfo::class.java)
+            localDataPut.putString(USER_INFO_PATH, strContact)
             currentUser!!.updateProfile(profileUpdates)
             db.collection(USER_INFO).document(currentUser!!.uid).update("name", name)
             rootView.userNameText.text = name
@@ -202,6 +212,9 @@ class MyPageFragment : Fragment() {
                     //업로드 완료
                     val index = localDataGet.getInt(getString(R.string.userProfileChange),0)+1
                     profileUri = "profile/"+currentUser!!.uid
+                    userInfo.profileUri = profileUri
+                    val strContact = gson.toJson(userInfo, UserInfo::class.java)
+                    localDataPut.putString(USER_INFO_PATH, strContact)
                     localDataPut.putInt(getString(R.string.userProfileChange),index)
                     localDataPut.commit()
 

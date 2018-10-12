@@ -1,6 +1,5 @@
-package condom.best.condom.View.BottomNavPage.Product
+package condom.best.condom.View.BottomNavPage.Product.ReviewDetail
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,10 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.signature.ObjectKey
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import com.instacart.library.truetime.TrueTimeRx
 import condom.best.condom.R
 import condom.best.condom.View.BottomNavPage.Adapter.ProductReviewListAdapter
@@ -30,13 +25,13 @@ import condom.best.condom.View.Data.FirebaseConst.Companion.USER_INFO
 import condom.best.condom.View.Data.UserLocalDataPath.Companion.userReviewLikePath
 import condom.best.condom.View.MainActivity
 import condom.best.condom.View.MainActivity.Companion.currentUser
+import condom.best.condom.View.MainActivity.Companion.db
 import condom.best.condom.View.MainActivity.Companion.localDataGet
 import condom.best.condom.View.MainActivity.Companion.localDataPut
-import kotlinx.android.synthetic.main.fragment_product_review.view.*
 import kotlinx.android.synthetic.main.fragment_review_detail.view.*
 import java.util.*
 
-
+//TODO 지워도 될듯
 @Suppress("DEPRECATION")
 class ReviewDetailFragment : Fragment() {
 
@@ -46,8 +41,11 @@ class ReviewDetailFragment : Fragment() {
             divider = it.getInt(dividerParam)
             productData = it.getSerializable(productInfo) as ProductInfo
             likeState.like = it.getBoolean(likeStateParams)
-            if(divider==1)
+            if(divider==1) {
+                productReviewData = ProductReviewData()
                 userRatingData = it.getSerializable(userRating) as UserRatingData
+                userInfo = MainActivity.userInfo
+            }
             else {
                 productReviewData = it.getSerializable(productReviewDataParams) as ProductReviewData
                 userInfo = it.getSerializable(userInfoParam) as UserInfo
@@ -61,9 +59,6 @@ class ReviewDetailFragment : Fragment() {
     private val userInfoParam = "userInfoParam"
     private val dividerParam = "dividerParam"
     private val likeStateParams = "likeStateParams"
-
-    private val db = FirebaseFirestore.getInstance()
-    private val storage = FirebaseStorage.getInstance("gs://condom-55a91").reference
 
     private lateinit var productData : ProductInfo
     private lateinit var userRatingData : UserRatingData
@@ -102,22 +97,22 @@ class ReviewDetailFragment : Fragment() {
                                                     localDataPut.putInt(userReviewLikePath(productData.prodName,productReviewData.userUid,productReviewData.date), REVIEW_LIKE_OFF)
                                                 }
                                                 localDataPut.commit()
-                                                listStateSetting(likeState) //좋아요 상태, 개수
+//                                                listStateSetting(likeState) //좋아요 상태, 개수
                                             }
                                 }
                             }
                             getCommentData()//리뷰의 댓글 데이터 가져오기
-                            listStateSetting(likeState) //좋아요 상태, 개수
+//                            listStateSetting(likeState) //좋아요 상태, 개수
                         } catch (e: KotlinNullPointerException) { }
                     }
 
-            userInfoSetting(currentUser?.displayName.toString(), currentUser?.photoUrl.toString())//유저 정보
-            prodInfoSetting()//제품정보
+//            userInfoSetting(currentUser?.displayName.toString(), currentUser?.photoUrl.toString())//유저 정보
+//            prodInfoSetting()//제품정보
         }
         else if(divider == 2){//다른유저 댓글
-            userInfoSetting(userInfo.name,userInfo.profileUri)//유저 정보
-            prodInfoSetting() //제품정보
-            listStateSetting(likeState.like) //좋아요 상태, 개수
+//            userInfoSetting(userInfo.name,userInfo.profileUri)//유저 정보
+//            prodInfoSetting() //제품정보
+//            listStateSetting(likeState.like) //좋아요 상태, 개수
             getCommentData()//리뷰의 댓글 데이터 가져오기
         }
 
@@ -143,8 +138,30 @@ class ReviewDetailFragment : Fragment() {
 
         rootView.sendComment.setOnClickListener { sendComment(rootView.commentText.text.toString()) } //댓글 남기기
 
-        userCommentAdapter = ProductReviewListAdapter(rootView.context, ProductReviewData_Like(),commentList,2)
+        ProductReviewListAdapter.ProductReviewViewHolder.commentLike(object : ProductReviewListAdapter.ProductReviewViewHolder.InterfaceCommentLike{
+            override fun interfaceReviewLike(likeBool: Boolean) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
 
+            override fun interfaceCommentLike(likeBool: Boolean, productReviewData: ReviewCommentList, position: Int) { // 코멘트 좋아요
+
+            }
+            override fun interfaceCommentRemove(reviewCommentData: ArrayList<ReviewCommentList>, position: Int) { //코멘트 삭제
+                db.collection(PRODUCT_REVIEWS).document(productData.prodName).collection(COMMENT).document(productReviewData.userUid).collection(REVIEW_COMMENT)
+                        .document(reviewCommentData[position].date.toString()).delete()
+                commentListUpdate(2)
+
+                commentList.reviewCommentData.removeAt(position)
+                commentList.commentLike.removeAt(position)
+                commentList.commenterInfo.removeAt(position)
+//                userCommentAdapter.notifyItemRemoved(position)
+                userCommentAdapter.notifyDataSetChanged()
+            }
+            override fun interfaceCommentImproper() { //코멘트 신고
+            }
+        })
+
+        userCommentAdapter = ProductReviewListAdapter(rootView.context, ProductReviewData_Like(), commentList, productData, userInfo, productReviewData, 2)
         return rootView
     }
     private fun getCommentData(){ // 리뷰 댓글 가져오기
@@ -214,21 +231,15 @@ class ReviewDetailFragment : Fragment() {
                 }
     }
     private fun sendComment(comment : String){ //댓글 남기기
-        val trueTime = try { TrueTimeRx.now().time }
-        catch (e : IllegalStateException){ System.currentTimeMillis() }
-        val reviewCommentList = ReviewCommentList(comment, trueTime, currentUser?.uid.toString(),0)
+        val trueTime = try {
+            TrueTimeRx.now().time
+        } catch (e: IllegalStateException) {
+            System.currentTimeMillis()
+        }
+        val reviewCommentList = ReviewCommentList(comment, trueTime, currentUser?.uid.toString(), 0)
         db.collection(PRODUCT_REVIEWS).document(productData.prodName).collection(COMMENT).document(productReviewData.userUid).collection(REVIEW_COMMENT)
                 .document(trueTime.toString()).set(reviewCommentList)
-
-        val sfDocRef = db.collection(PRODUCT_REVIEWS).document(productData.prodName).collection(COMMENT).document(productReviewData.userUid)
-
-        db.runTransaction { transaction ->//평가리스트 로컬 저장
-            val snapshot = transaction.get(sfDocRef)
-            val reReviewNum = snapshot.getLong("reReviewNum")!! + 1
-            transaction.update(sfDocRef, "reReviewNum", reReviewNum)
-            reReviewNum
-        }.addOnSuccessListener {}.addOnFailureListener {}
-
+        commentListUpdate(1)// 코맨트 카운트
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(rootView.commentText.windowToken, 0)
 
@@ -236,52 +247,28 @@ class ReviewDetailFragment : Fragment() {
         rootView.sendComment.isEnabled = false
         rootView.sendComment.setTextColor(rootView.context.resources.getColor(R.color.gray1))
 
-        commentList.reviewCommentData.add(0,reviewCommentList)
-        userCommentAdapter.notifyItemInserted(0)
-    }
-    private fun userInfoSetting(name : String, profileUrl : String){//유저 정보
-        val index = MainActivity.localDataGet.getInt(getString(R.string.userProfileChange),0)
-        if(profileUrl == "null")
-            GlideApp.with(this)
-                    .load(context!!.resources.getDrawable(R.drawable.ic_user))
-                    .apply(RequestOptions().centerCrop())
-                    .apply(RequestOptions.circleCropTransform())
-                    .apply(RequestOptions.signatureOf(ObjectKey("${getString(R.string.userProfileChange)}$index")))
-                    .into(rootView.userCommentViewProfile)
-        else
-            GlideApp.with(rootView.context)
-                    .load(storage.child(profileUrl))
-                    .apply(RequestOptions().centerCrop())
-                    .apply(RequestOptions.circleCropTransform())
-                    .apply(RequestOptions.signatureOf(ObjectKey("${getString(R.string.userProfileChange)}$index")))
-                    .into(rootView.userImage)
-        rootView.userNameText.text = name
-    }
-    private fun prodInfoSetting(){//제품정보
-        val c = Calendar.getInstance()
-        rootView.pName.text = productData.prodName
-        rootView.pCompany.text = productData.prodCompany
-        if(divider == 1) {
-            rootView.reviewCommentText.text = userRatingData.reviewComment
-            rootView.userRatingNum.text = userRatingData.ratingPoint.toString()
-            c.timeInMillis = userRatingData.reviewDate
+        commentList.reviewCommentData.add(0, reviewCommentList)
+        commentList.commentLike.add(0, ReviewLike(false))
+        commentList.commenterInfo.add(0, MainActivity.userInfo)
+        if(commentList.reviewCommentData.size == 1){
+            rootView.userCommentList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            rootView.userCommentList.adapter = userCommentAdapter
         }
-        else {
-            rootView.reviewCommentText.text = productReviewData.review
-            rootView.userRatingNum.text = productReviewData.rating.toString()
-            c.timeInMillis = productReviewData.date
-        }
-        val strNumber = String.format("%04d. %02d. %02d", c.get(Calendar.YEAR),c.get(Calendar.MONTH)+1,c.get(Calendar.DAY_OF_MONTH))
-        rootView.reviewDateText.text = strNumber
+        userCommentAdapter.notifyDataSetChanged()
+//        userCommentAdapter.notifyDataSetChanged()
+
     }
-    @SuppressLint("SetTextI18n")
-    private fun listStateSetting(listState: Boolean){//좋아요 상태, 개수, 댓글 개수
-        if(listState)
-            rootView.likeImage.setImageDrawable(rootView.resources.getDrawable(R.drawable.ic_like_ok))
-        else
-            rootView.likeImage.setImageDrawable(rootView.resources.getDrawable(R.drawable.ic_like))
-        rootView.likeNum.text = productReviewData.likeNum.toString()
-        rootView.commentNum.text = "댓글 ${productReviewData.reReviewNum}"
+    fun commentListUpdate(state: Int){
+        val sfDocRef = db.collection(PRODUCT_REVIEWS).document(productData.prodName).collection(COMMENT).document(productReviewData.userUid)
+        db.runTransaction { transaction ->
+            //평가리스트 로컬 저장
+            val snapshot = transaction.get(sfDocRef)
+            val reReviewNum =
+                    if(state==1) { snapshot.getLong("reReviewNum")!! + 1 }
+                    else{ snapshot.getLong("reReviewNum")!! - 1 }
+            transaction.update(sfDocRef, "reReviewNum", reReviewNum)
+            reReviewNum
+        }.addOnSuccessListener {}.addOnFailureListener {}
     }
 
     companion object {

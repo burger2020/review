@@ -116,7 +116,7 @@ class   ActMoreFragment : Fragment(), ActMoreContract.View{
                     try {
                         val prodData = it.toObject(ProductInfo::class.java)
                         (activity as MainActivity).productReviewFragment = ProductReviewFragment.prodData(prodData!! )
-                        FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).productReviewFragment,"MY")
+                        FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).productReviewFragment,"MY")
                     }catch (e:KotlinNullPointerException){}
                 }
     }

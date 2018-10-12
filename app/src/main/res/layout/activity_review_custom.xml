@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".BottomNavPage.Product.ReviewActivity"
+    tools:context=".BottomNavPage.Product.ReviewCustomActivity"
     android:orientation="vertical">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/rating_appbar"
@@ -59,4 +59,11 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
+    <CheckBox
+        android:id="@+id/profileOpenCheckBox"
+        android:textColor="@color/gray5"
+        android:layout_margin="8dp"
+        android:text="프로필, 나이, 성별 가리기"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

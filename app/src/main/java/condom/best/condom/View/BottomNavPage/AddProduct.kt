@@ -22,14 +22,14 @@ import condom.best.condom.View.Data.ProductInfo
 import condom.best.condom.View.Data.ProductRating
 import condom.best.condom.R
 import condom.best.condom.View.Data.GlideApp
+import condom.best.condom.View.MainActivity.Companion.db
+import condom.best.condom.View.MainActivity.Companion.storage
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_add_product.*
 import java.io.ByteArrayOutputStream
 
 class AddProduct : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
-    private val storage = FirebaseStorage.getInstance("gs://condom-55a91")
     private lateinit var pImagePath : String
 
     private var imageBool = false
@@ -150,8 +150,7 @@ class AddProduct : AppCompatActivity() {
                     .setContentType("image/jpeg")
                     .build()
             pImagePath = "Product_Image/" + pName.text.toString()
-            val storageRef = storage.reference
-            val uploadTask = storageRef.child(pImagePath).putBytes(imageData, metadata)
+            val uploadTask = storage.child(pImagePath).putBytes(imageData, metadata)
 
             val dialog = SpotsDialog.Builder()
                     .setContext(this)
@@ -177,7 +176,6 @@ class AddProduct : AppCompatActivity() {
             val unitList = arrayListOf<Int>()
             val unitString = pUnit.text.toString()
             var unit = ""
-            Log.d("unitString",""+unitString)
             for(i in 0 until  unitString.length){
                 when {
                     unitString[i] == '.' -> {

@@ -72,15 +72,9 @@
             <EditText
                 android:id="@+id/pCompany"
                 android:hint="판매사 (번호 코드)"
-                android:inputType="number"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:layout_margin="5dp"
-                android:text="@string/companyList"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
         </LinearLayout>
     </ScrollView>
     <Button

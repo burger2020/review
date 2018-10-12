@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:id="@+id/prodRatingPoint"
                     android:text="평점0.0 (0명)"
                     android:layout_width="wrap_content"
@@ -169,6 +169,7 @@
             </LinearLayout>
             <!--유저 리뷰-->
             <com.github.aakira.expandablelayout.ExpandableLinearLayout
+
                 android:id="@+id/userCommentView"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -205,7 +206,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:padding="5dp"
-                        android:layout_marginRight="11dp"
+                        android:layout_marginEnd="11dp"
                         android:id="@+id/reviewRemove"
                         android:textSize="12dp"
                         android:gravity="right"
@@ -216,7 +217,7 @@
                     <TextView
                         android:layout_gravity="bottom"
                         android:padding="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:id="@+id/reviewCustom"
                         android:textSize="12dp"
                         android:gravity="right"
@@ -225,16 +226,70 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </com.github.aakira.expandablelayout.ExpandableLinearLayout>
-            <!--<View-->
-            <!--android:background="@color/gray0_5"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="8dp" />-->
-            <!--&lt;!&ndash;제품 평점 그래프&ndash;&gt;-->
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-            <!--</LinearLayout>-->
 
+            <View
+                android:background="@color/gray0_5"
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+            <!--별점 분포도-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="@string/ratingInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            tools:text="평점 0.0 (0명)"
+                            android:id="@+id/ratingPointText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/rating_info_more"
+                        android:textStyle="bold"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/product_info_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <FrameLayout
+                    android:layout_marginBottom="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:visibility="invisible"
+                        android:id="@+id/ratingDisChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+                    <LinearLayout
+                        tools:visibility="gone"
+                        android:id="@+id/graphProgressBar"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp">
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
             <View
                 android:background="@color/gray0_5"
                 android:layout_width="match_parent"
@@ -262,40 +317,76 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <TextView
-                android:id="@+id/unitText"
-                android:text="판매 단위"
-                android:layout_marginLeft="10dp"
+
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/gray9"
-                android:textSize="13dp"
-                android:lineSpacingExtra="6dp"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/featureText"
-                android:text="제품 정보"
-                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="판매 단위"
+                    android:textColor="@color/gray9"
+                    android:textSize="13dp"
+                    android:lineSpacingExtra="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/unitText"
+                    tools:text="판매 단위"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/gray9"
-                android:textSize="13dp"
-                android:lineSpacingExtra="6dp"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/ingredientText"
-                android:text="제품 성분"
-                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="제품 성분"
+                    android:textColor="@color/gray9"
+                    android:textSize="13dp"
+                    android:lineSpacingExtra="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/ingredientText"
+                    tools:text="제품 성분"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/gray9"
-                android:textSize="13dp"
-                android:lineSpacingExtra="6dp"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="제품 정보"
+                    android:textColor="@color/gray9"
+                    android:textSize="13dp"
+                    android:lineSpacingExtra="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/featureText"
+                    tools:text="제품 정보"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
             <View
                 android:background="@color/gray0_5"
                 android:layout_width="match_parent"
                 android:layout_height="8dp" />
+
             <LinearLayout
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
@@ -319,23 +410,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <LinearLayout
+            <FrameLayout
+                android:minHeight="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <android.support.v7.widget.RecyclerView
+                    android:minHeight="100dp"
                     android:id="@+id/ReviewList"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/progressBar"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
                 <TextView
                     android:textSize="@dimen/emptyViewTextSize"
                     android:gravity="center"
+                    android:textColor="@color/black"
                     android:text="첫리뷰를 등록해 주세요!"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:id="@+id/emptyView"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp" />
-            </LinearLayout>
+                    android:layout_height="100dp" />
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

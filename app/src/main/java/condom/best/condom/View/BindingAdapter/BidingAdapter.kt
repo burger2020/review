@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
+import android.util.Log
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.nguyenhoanglam.imagepicker.model.Image
@@ -138,11 +139,13 @@ object FragmentUtil{
         }
     }
     @JvmStatic
-    fun fragmentAddChanger(activity:Activity, fragment : android.support.v4.app.Fragment, container : String){
+    fun fragmentChanger(activity:Activity, fragment : android.support.v4.app.Fragment, container : String){
         when(container){
             HOME->{
                 (activity as MainActivity).supportFragmentManager.beginTransaction()
                         .hide(activity.currentHomeFragment).add(R.id.bottomNavPageContainerHome,fragment).commit()
+                activity.beforeSearchResultFragment = activity.currentHomeFragment == activity.searchResultFragment
+                Log.d("Fragment!!!",","+activity.beforeSearchResultFragment)
                 activity.currentHomeFragment = fragment
             }
             TAG->{

@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.firestore.FirebaseFirestore
-import condom.best.condom.View.Data.ProductInfo
 import condom.best.condom.R
+import condom.best.condom.View.Data.ProductInfo
 import kotlinx.android.synthetic.main.fragment_product_info_more.view.*
 
 class ProductInfoMore : Fragment() {
@@ -33,7 +33,12 @@ class ProductInfoMore : Fragment() {
         rootView.pMoreCountry.text = productData.prodName
         rootView.pMoreTag.text = productData.prodTag.toString()
         rootView.pMoreUnit.text = productData.sellUnit.toString()
-        rootView.pMoreFeature.text = productData.prodFeature
+        rootView.pMoreFeature.apply {
+            text = productData.prodFeature
+
+        }
+
+
         rootView.pMoreIngredient.text = productData.prodIngredient
 
         return rootView

@@ -21,7 +21,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomStatus"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +64,7 @@
         <activity android:name=".BottomNavPage.Adapter.SearchListAdapter" />
         <activity android:name=".View.Dialog.RatingDialog" />
         <activity
-            android:name=".BottomNavPage.Product.ReviewActivity"
+            android:name=".BottomNavPage.Product.ReviewCustomActivity"
             android:theme="@style/AppTheme.CustomStatus" />
         <activity
             android:name=".BottomNavPage.Product.ProductInfoMore"
@@ -77,8 +77,10 @@
             android:name=".BottomNavPage.Product.PhotoViewActivity"
             android:theme="@style/AppTheme.CustomStatus" />
         <activity android:name=".View.BottomNavPage.Adapter.TagAdapter" />
-        <activity android:name=".View.BottomNavPage.Column.ColumnAddActivity"
+        <activity
+            android:name=".View.BottomNavPage.Column.ColumnAddActivity"
             tools:ignore="InnerclassSeparator" />
+        <activity android:name=".View.BottomNavPage.Product.ReviewDetail.ReviewDetailActivity"></activity>
     </application>
 
 </manifest>

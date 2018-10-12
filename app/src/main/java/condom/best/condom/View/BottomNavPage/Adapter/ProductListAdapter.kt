@@ -8,11 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.google.firebase.storage.FirebaseStorage
-import condom.best.condom.View.Data.ProductInfo
 import condom.best.condom.R
-import kotlinx.android.synthetic.main.adapter_home_list.view.*
 import condom.best.condom.View.Data.GlideApp
+import condom.best.condom.View.Data.ProductInfo
+import condom.best.condom.View.MainActivity.Companion.storage
+import kotlinx.android.synthetic.main.adapter_home_list.view.*
 
 class ProductListAdapter(val context:Context, private val pList:ArrayList<ProductInfo>, private val divider : Int) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,12 +27,10 @@ class ProductListAdapter(val context:Context, private val pList:ArrayList<Produc
     }
     override fun getItemCount(): Int = pList.size
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val storage = FirebaseStorage.getInstance("gs://condom-55a91")
-        private val storageRef = storage.reference
-
         private val pName = itemView.productName
         private val pImage = itemView.productImage
-        private val pPrice = itemView.productPrice
+        //TODO 가격 표시 보류()
+//        private val pPrice = itemView.productPrice
         private val pCompany = itemView.productCompany
         private val productContainer = itemView.productContainer
         @SuppressLint("SetTextI18n")
@@ -40,12 +38,12 @@ class ProductListAdapter(val context:Context, private val pList:ArrayList<Produc
 
             //상품 이미지
             GlideApp.with(context)
-                    .load(storageRef.child(pList[position].prodImage))
+                    .load(storage.child(pList[position].prodImage))
                     .transition(DrawableTransitionOptions.withCrossFade(500))
                     .centerCrop()
                     .into(pImage)
             //가격
-            pPrice.text = pList[position].prodPrice.toString()+"원"
+//            pPrice.text = pList[position].prodPrice.toString()+"원"
             //제조사
             pCompany.text = pList[position].prodCompany
             //상품명

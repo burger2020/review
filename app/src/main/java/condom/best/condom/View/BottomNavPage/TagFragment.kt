@@ -9,11 +9,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import condom.best.condom.View.Data.TagList
 import condom.best.condom.R
 import condom.best.condom.View.BindingAdapter.FragmentUtil
 import condom.best.condom.View.BottomNavPage.Adapter.TagAdapter
 import condom.best.condom.View.BottomNavPage.TagSearch.TagSearchFragment
+import condom.best.condom.View.Data.TagList
 import condom.best.condom.View.MainActivity
 import kotlinx.android.synthetic.main.fragment_hash_tag.view.*
 
@@ -57,31 +57,28 @@ class TagFragment : Fragment(), TagContract.View {
                 ,context!!.resources.getColor(R.color.white))
 
         val colors = ArrayList<IntArray>()
-        colors.add(basicColor)
-        colors.add(basicColor)
-        colors.add(basicColor)
-        colors.add(basicColor)
+        for (i in 0 until shapeTagList.size)
+            colors.add(basicColor)
         tagList.add(TagList("형태",shapeTagList,colors))
 
         val colors1 = ArrayList<IntArray>()
-        colors1.add(basicColor)
-        colors1.add(basicColor)
-        colors1.add(basicColor)
-        colors1.add(basicColor)
+        for (i in 0 until charTagList.size)
+            colors1.add(basicColor)
         tagList.add(TagList("특징",charTagList,colors1))
 
         val colors2 = ArrayList<IntArray>()
-        colors2.add(basicColor)
+        for (i in 0 until thickTagList.size)
+            colors2.add(basicColor)
         tagList.add(TagList("두께",thickTagList,colors2))
 
         val colors3 = ArrayList<IntArray>()
-        colors3.add(basicColor)
-        colors3.add(basicColor)
+        for (i in 0 until diaTagList.size)
+            colors3.add(basicColor)
         tagList.add(TagList("지름",diaTagList,colors3))
 
         val colors4 = ArrayList<IntArray>()
-        colors4.add(basicColor)
-        colors4.add(basicColor)
+        for (i in 0 until lengthTagList.size)
+            colors4.add(basicColor)
         tagList.add(TagList("길이",lengthTagList,colors4))
 
         val colors5 = ArrayList<IntArray>()
@@ -105,7 +102,7 @@ class TagFragment : Fragment(), TagContract.View {
         }
         rootView.tagListSearch.setOnClickListener {//태그 검색
             (activity as MainActivity).tagSearchResultFragment = TagSearchFragment.newInstance(selectTagList)
-            FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).tagSearchResultFragment,"TAG")
+            FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).tagSearchResultFragment,"TAG")
             tagListAdapter.notifyDataSetChanged()
         }
 

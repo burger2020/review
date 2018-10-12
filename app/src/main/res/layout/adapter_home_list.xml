@@ -49,6 +49,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:visibility="gone"
                         android:textSize="10dp"
                         android:id="@+id/productPrice"
                         android:hint="정가"
@@ -111,7 +112,7 @@
             android:textSize="11dp"
             android:layout_marginBottom="3dp"
             android:gravity="right"
-            android:text="상품 자세히"
+            android:text="제품 자세히"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

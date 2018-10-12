@@ -22,6 +22,16 @@ class SearchListAdapter(val context: Context, private val searchList: ArrayList<
         private val pName = itemView.searchListText!!
         fun bindHolder(searchList: ArrayList<String>,position: Int) {
             pName.text = searchList[position]
+            pName.setOnClickListener {
+                click.searchLickClick(searchList[position])
+            }
         }
+    }
+    interface SearchListClick {
+        fun searchLickClick(searchList : String)
+    }
+    companion object {
+        lateinit var click : SearchListClick
+        fun listClick(click : SearchListClick){ this.click = click }
     }
 }

@@ -26,7 +26,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:text="@string/sexlifeTip"
+                android:text="@string/sexLifeTip"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

@@ -34,20 +34,18 @@
                 android:layout_height="wrap_content" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <ScrollView
+        android:layout_margin="8dp"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <View
-            android:layout_marginLeft="80dp"
-            android:background="@color/gray0_5"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"/>
         <LinearLayout
+            android:id="@+id/layer"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
             <LinearLayout
+                android:gravity="center_vertical"
                 android:id="@+id/linear1"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -60,15 +58,15 @@
                     android:layout_height="50dp" />
                 <TextView
                     android:id="@+id/pMoreName"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="제품명"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -82,13 +80,13 @@
                     android:id="@+id/pMoreCompany"
                     android:layout_marginLeft="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="제조사"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -102,13 +100,13 @@
                     android:id="@+id/pMoreCountry"
                     android:layout_marginLeft="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="제조국가"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -122,13 +120,13 @@
                     android:id="@+id/pMoreTag"
                     android:layout_marginLeft="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="태그"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -140,15 +138,36 @@
                     android:layout_height="50dp" />
                 <TextView
                     android:id="@+id/pMoreUnit"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="판매 단위"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:text="전성분"
+                    android:hint="제품 특징"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/pMoreIngredient"
+                    android:layout_marginStart="50dp"
+                    android:textColor="@color/black"
+                    android:text="전성분"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:id="@+id/featureLayer"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -160,34 +179,13 @@
                     android:layout_height="50dp" />
                 <TextView
                     android:id="@+id/pMoreFeature"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
                     android:textColor="@color/black"
-                    android:gravity="center_vertical"
                     android:text="제품 특징"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center_vertical"
-                    android:text="제품 특징"
-                    android:hint="전성분"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:id="@+id/pMoreIngredient"
-                    android:layout_marginLeft="50dp"
-                    android:textColor="@color/black"
-                    android:gravity="center_vertical"
-                    android:text="전성분"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

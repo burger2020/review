@@ -2,7 +2,6 @@ package condom.best.condom.View.BottomNavPage.TagSearch
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_tag_search.view.*
 
 private const val ARG_PARAM1 = "param1"
 
-class TagSearchFragment : Fragment(), TagSearchContract.View, SwipeRefreshLayout.OnRefreshListener {
+class TagSearchFragment : Fragment(), TagSearchContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +48,7 @@ class TagSearchFragment : Fragment(), TagSearchContract.View, SwipeRefreshLayout
         ProductListAdapter.productClicked(object : ProductListAdapter.InterfaceClickProdTag{ //제품 클릭 -> 제품 리뷰 페이지
             override fun interfaceClickProdTag(productData: ProductInfo) {
                 (activity as MainActivity).productReviewFragment = ProductReviewFragment.prodData(productData)
-                FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).productReviewFragment,"TAG")
+                FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).productReviewFragment,"TAG")
             }
         })
 
@@ -58,28 +57,23 @@ class TagSearchFragment : Fragment(), TagSearchContract.View, SwipeRefreshLayout
         rootView.productTagList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rootView.productTagList.adapter = prodTag
 
-        rootView.refreshList.setOnRefreshListener (this)
-
         return rootView
-    }
-    override fun onRefresh() {//새로고침
-        presenter.getProdLst(tagList)
     }
     private fun emptyViewSetting(size : Int){ //엠티뷰 셋
         if(size == 0){
-            rootView.productList.visibility= View.GONE
-            rootView.emptyView.visibility= View.VISIBLE
+            rootView.productList.visibility = View.GONE
+            rootView.emptyView.visibility = View.VISIBLE
         }else{
-            rootView.productList.visibility= View.VISIBLE
-            rootView.emptyView.visibility= View.GONE
+            rootView.productList.visibility = View.VISIBLE
+            rootView.emptyView.visibility = View.GONE
         }
+        rootView.progressBar.visibility = View.GONE
     }
     fun prodListSetting(searchData: ArrayList<ProductInfo>) { // 제품 리스트 데이터 셋
         prodList.clear()
         prodList.addAll(searchData)
         emptyViewSetting(prodList.size)
         adapter.notifyDataSetChanged()
-        rootView.refreshList.isRefreshing = false
     }
     companion object {
         @JvmStatic

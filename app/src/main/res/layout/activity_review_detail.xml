@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.BottomNavPage.Product.ReviewDetail.ReviewDetailActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/white"
+            android:id="@+id/userCommentList"
+            tools:listitem = "@layout/adapter_product_review_list"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <LinearLayout
+            android:background="@drawable/comment_rect"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:scrollHorizontally="false"
+                android:layout_margin="1dp"
+                android:background="@color/white"
+                android:id="@+id/commentText"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:hint="댓글을 써주세요."
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:maxHeight="100dp"/>
+            <TextView
+                android:enabled="false"
+                android:id="@+id/sendComment"
+                android:textColor="@color/gray1"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="등록"
+                android:layout_width="60dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        tools:visibility="gone"
+        android:id="@+id/progressBar"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

@@ -197,7 +197,7 @@ public class ProgressWheel extends View {
         int paddingRight = getPaddingRight();
 
         if (!fillRadius) {
-            // Width should equal to Height, find the min value to setup the circle
+            // Width should equal to Height, find the min value to setup the Won
             int minValue = Math.min(layout_width - paddingLeft - paddingRight,
                     layout_height - paddingBottom - paddingTop);
 
@@ -652,7 +652,7 @@ public class ProgressWheel extends View {
     }
 
     /**
-     * @return the base spinning speed, in full circle turns per second
+     * @return the base spinning speed, in full Won turns per second
      * (1.0 equals on full turn in one second), this value also is applied for
      * the smoothness when setting a progress
      */
@@ -661,7 +661,7 @@ public class ProgressWheel extends View {
     }
 
     /**
-     * Sets the base spinning speed, in full circle turns per second
+     * Sets the base spinning speed, in full Won turns per second
      * (1.0 equals on full turn in one second), this value also is applied for
      * the smoothness when setting a progress
      *

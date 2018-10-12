@@ -17,7 +17,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.instacart.library.truetime.TrueTimeRx
 import condom.best.condom.BottomNavPage.Product.ProductInfoMore
-import condom.best.condom.BottomNavPage.Product.ReviewMoreFragment
 import condom.best.condom.BottomNavPage.Product.SearchFragment
 import condom.best.condom.R
 import condom.best.condom.View.BottomNavPage.Column.ColumnViewFragment
@@ -26,8 +25,10 @@ import condom.best.condom.View.BottomNavPage.HomeFragment
 import condom.best.condom.View.BottomNavPage.MyPage.ActMoreFragment
 import condom.best.condom.View.BottomNavPage.MyPageFragment
 import condom.best.condom.View.BottomNavPage.Product.ProductReviewFragment
-import condom.best.condom.View.BottomNavPage.Product.ReviewDetailFragment
+import condom.best.condom.View.BottomNavPage.Product.RatingGraph.RatingGraphDetail
+import condom.best.condom.View.BottomNavPage.Product.ReviewMoreFragment
 import condom.best.condom.View.BottomNavPage.TagFragment
+import condom.best.condom.View.BottomNavPage.Product.SearchResult.SearchResultFragment
 import condom.best.condom.View.BottomNavPage.TagSearch.TagSearchFragment
 import condom.best.condom.View.Data.*
 import condom.best.condom.View.Data.FirebaseConst.Companion.USER_ACT_INFO
@@ -46,6 +47,7 @@ import condom.best.condom.View.Data.UserLocalDataPath.Companion.USER_INFO_PATH
 import condom.best.condom.View.Sign.LogInActivity
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlin.concurrent.thread
 
 @SuppressLint("Registered")
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var mAuth: FirebaseAuth
     companion object {
-        val storage = FirebaseStorage.getInstance("gs://condom-55a91").reference
+        val storage = FirebaseStorage.getInstance("gs://condom_storage").reference
         @SuppressLint("StaticFieldLeak")
         val db = FirebaseFirestore.getInstance()
 
@@ -101,10 +103,12 @@ class MainActivity : AppCompatActivity(){
     var productReviewFragment = ProductReviewFragment.prodData(ProductInfo())
     var reviewMoreFragment = ReviewMoreFragment.newInstance(ProductInfo())
     var productInfoMoreFragment = ProductInfoMore.newInstance(ProductInfo())
-    var reviewDetailFragment = ReviewDetailFragment.newInstance(ProductInfo(), UserRatingData(), ProductReviewData(), UserInfo(),false,1)
     var columnViewFragment = ColumnViewFragment.newInstance(ColumnInfo())
+    var searchResultFragment = SearchResultFragment.newInstance("")
+    var graphFragment = RatingGraphDetail.newInstance(ProductRating(),ProductInfo())
     var actMoreFragment = ActMoreFragment()
 
+    var beforeSearchResultFragment : Boolean = false
     var currentHomeFragment : Fragment? = null
     var currentTagFragment : Fragment? = null
     var currentColumnFragment : Fragment? = null
@@ -114,6 +118,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         mAuth = FirebaseAuth.getInstance()
         currentUser = mAuth.currentUser
@@ -272,13 +277,17 @@ class MainActivity : AppCompatActivity(){
                 super.onBackPressed()
             } else if (!searchFragment.isHidden) { //검색화면에서 홈
                 fragmentBackPress(homeFragment,HOME)
-            } else if (!productReviewFragment.isHidden) { //제품리뷰에서 홈
-                fragmentBackPress(homeFragment,HOME)
-            } else if (!reviewMoreFragment.isHidden) { //리뷰터보기에서 제품리뷰
-                fragmentBackPress(productReviewFragment,HOME)
+                searchFragment.searchProd.setText("")
+            } else if (!productReviewFragment.isHidden) { //제품리뷰에서 홈 또는 검색 결과
+                if(beforeSearchResultFragment)
+                    fragmentBackPress(searchResultFragment,HOME)
+                else
+                    fragmentBackPress(homeFragment, HOME)
             } else if (!productInfoMoreFragment.isHidden) { //정보 더보기 에서 제품리뷰
                 fragmentBackPress(productReviewFragment,HOME)
-            } else if (!reviewDetailFragment.isHidden){ //리뷰 더보기 에서 제품리뷰
+            } else if (!searchResultFragment.isHidden) { //검색결과 에서 제품리뷰
+                fragmentBackPress(searchFragment,HOME)
+            } else if (!reviewMoreFragment.isHidden) { //리뷰터보기에서 제품리뷰
                 fragmentBackPress(productReviewFragment,HOME)
             }
         }else if(bottomNavPageContainerTag.visibility == View.VISIBLE){   //태그검색에서 홈

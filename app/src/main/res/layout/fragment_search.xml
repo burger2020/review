@@ -56,7 +56,9 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/search_rect"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <requestFocus />
+        </EditText>
         <ImageView
             android:layout_marginLeft="25dp"
             android:layout_centerVertical="true"
@@ -74,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:id="@+id/searchListLayer"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="vertical"
@@ -90,6 +93,7 @@
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/SearchList"
+                    tools:listitem="@layout/adapter_search_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

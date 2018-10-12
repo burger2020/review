@@ -64,8 +64,9 @@
     <string name="review">리뷰</string>
     <string name="wishlist">위시리스트</string>
     <string name="review_regit">리뷰남기기</string>
-    <string name="review_cutom">리뷰 수정</string>
+    <string name="review_custom">리뷰 수정</string>
     <string name="weight">리뷰남기기asdasd</string>
+    <string name="ratingInfo">별점 분포도</string>
     <string name="rating">평가하기</string>
     <string name="product_info">제품 정보</string>
     <string name="product_info_more">자세히</string>
@@ -83,6 +84,8 @@
     <string name="wishList">위시 리스트</string>
     <string name="reviewList">리뷰 리스트</string>
     <string name="emptyList">목록이 없습니다!</string>
-    <string name="sexlifeTip">성생활 팁</string>
+    <string name="sexLifeTip">성생활 팁</string>
     <string name="searchTag">태그 검색</string>
+    <string name="searchProd">제품 검색</string>
+    <string name="searchResult">검색 결과</string>
 </resources>

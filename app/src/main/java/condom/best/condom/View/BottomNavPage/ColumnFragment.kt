@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,7 +61,7 @@ class ColumnFragment : Fragment(), ColumnContract.View {
 
     fun columnOnClick(it: ColumnInfo) {//칼럼 클릭 이벤트
         (activity as MainActivity).columnViewFragment = ColumnViewFragment.newInstance(it)
-        FragmentUtil.fragmentAddChanger((activity as MainActivity),(activity as MainActivity).columnViewFragment,COLUMN)
+        FragmentUtil.fragmentChanger((activity as MainActivity),(activity as MainActivity).columnViewFragment,COLUMN)
     }
 
     companion object {

@@ -8,10 +8,10 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import com.google.firebase.storage.FirebaseStorage
-import condom.best.condom.View.Data.ProductInfo
 import condom.best.condom.R
 import condom.best.condom.View.Data.GlideApp
+import condom.best.condom.View.Data.ProductInfo
+import condom.best.condom.View.MainActivity.Companion.storage
 
 class RatingDialog (context: Context, private val count: Int, private val productInfo: ProductInfo, private val userRatingPint : Float) : BaseAdapter() {
 
@@ -19,9 +19,6 @@ class RatingDialog (context: Context, private val count: Int, private val produc
     override fun getCount(): Int { return count }
     override fun getItem(position: Int): Any { return position }
     override fun getItemId(position: Int): Long { return position.toLong() }
-
-    private val storage = FirebaseStorage.getInstance("gs://condom-55a91").reference
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder: ViewHolder
         var view: View? = convertView

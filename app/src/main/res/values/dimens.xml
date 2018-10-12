@@ -13,5 +13,5 @@
     <dimen name="tagListMarginHor">4dp</dimen>
     <dimen name="tagListMarginVer">4dp</dimen>
 
-    <dimen name="emptyViewTextSize">18dp</dimen>
+    <dimen name="emptyViewTextSize">15dp</dimen>
 </resources>

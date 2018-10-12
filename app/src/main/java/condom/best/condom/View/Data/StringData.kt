@@ -6,6 +6,7 @@ import condom.best.condom.R
 import condom.best.condom.View.MainActivity.Companion.currentUser
 import condom.best.condom.View.MainActivity.Companion.localDataGet
 import java.io.Serializable
+import java.util.*
 
 class StringData {
     companion object {
@@ -41,8 +42,14 @@ class StringData {
         const val REVIEW = "REVIEW"
         const val RATING_POINT = "RATING_POINT"
         const val USER_COMMENT = "USER_COMMENT"
+        const val PROFILE_OPEN_CHECKED = "PROFILE_OPEN_CHECKED"
 
         const val SEARCH_LIST = "SEARCH_LIST"
+
+        const val LIKE_NUM = "LIKE_NUM"
+        const val LIKE_STATE = "LIKE_STATE"
+        const val COMMENT_NUM = "COMMENT_NUM"
+        const val REVIEW_UID = "REVIEW_UID"
     }
 }
 class GetSignatureKey {
@@ -65,7 +72,6 @@ class FirebaseConst{
         const val COMMENT = "COMMENT"
         const val COMMENT_LIKE = "COMMENT_LIKE"
         const val REVIEW_COMMENT = "REVIEW_COMMENT"
-        const val COMMENT_LIKE_LIST = "COMMENT_LIKE_LIST"
 
 
         const val REVIEW_LIKE_ON = 1
@@ -93,9 +99,15 @@ class UserLocalDataPath{
     }
 }
 //유저 정보
-class UserInfo(var profileUri:String, var gender : Int, val name : String, val birth : Long) : Serializable {
+class UserInfo(var profileUri:String, var gender : Int, var name : String, val birth : Long) : Serializable {
     constructor() : this("none",0,"",0)
-
+    fun getOld() : Int{
+        val c = Calendar.getInstance()
+        val c_ = Calendar.getInstance()
+        c_.timeInMillis = birth
+        val old = c.get(Calendar.YEAR) - c_.get(Calendar.YEAR)
+        return old/10*10
+    }
 }
 //유저 활동 정보
 data class UserActInfo(var ratingNum : Int, var reviewNum : Int, var wishNum : Int) : Serializable {
@@ -105,29 +117,40 @@ data class UserActInfo(var ratingNum : Int, var reviewNum : Int, var wishNum : I
 data class ProductInfo(val prodImage:String, val prodName:String, val prodPrice:ArrayList<Int>, val prodTag:ArrayList<String>, val prodCompany:String, val prodPoint : Float, val prodRatingNum : Int,
                        val sellUnit: ArrayList<Int>, val prodFeature : String, val prodIngredient : String) : Serializable {
     constructor() : this("","",arrayListOf(), arrayListOf(),"",0F,0, arrayListOf(),"","")
+
 }
 //제품 별점
-data class ProductRating(val ratingData : ArrayList<Int>){
+data class ProductRating(val ratingData : ArrayList<Int>) : Serializable{
+    constructor() : this(arrayListOf(0,0,0,0,0,0,0,0,0,0))
+
+    fun noneZero(){
+        for(i in 0 until ratingData.size){
+            if(ratingData[i]<0)
+                ratingData[i] = 0
+        }
+    }
+}
+data class MailDetailRating(val mailRatingData : ArrayList<Int>){
     constructor() : this(arrayListOf(0,0,0,0,0,0,0,0,0,0))
 }
 //제품 리뷰 데이터
-data class ProductReviewData(val review : String, val date : Long, val userUid : String, var likeNum : Long, val rating : Float, val reReviewNum : Int) : Serializable{
-    constructor() : this("",0,"",0,0F,0)
+data class ProductReviewData(val review : String, val date : Long, val userUid : String, var likeNum : Long, val rating : Float, var reReviewNum : Int, var profileOpen : Boolean) : Serializable{
+    constructor() : this("",0,"",0,0F,0, true)
 }
 data class ProductReviewData_Like(val productReviewData: ArrayList<ProductReviewData>, var reviewerInfo: ArrayList<UserInfo>, val reviewLike : ArrayList<ReviewLike>){
     //제품 리뷰 데이터 + 좋아요
     constructor() : this(arrayListOf(), arrayListOf(), arrayListOf())
 }
-data class ReviewCommentList(val comment : String, val date : Long, val userUid : String, val likeNum: Int){
+data class ReviewCommentList(val comment : String, val date : Long, val userUid : String, var likeNum: Int) : Serializable{
     //리뷰에 코멘트 데이터
     constructor() : this("",0L,"",0)
 }
-data class ReviewCommentList_Like(val reviewCommentData : ArrayList<ReviewCommentList>, var commenterInfo : ArrayList<UserInfo>, val commentLike : ArrayList<ReviewLike>){
+data class ReviewCommentList_Like(val reviewCommentData : ArrayList<ReviewCommentList>, var commenterInfo : ArrayList<UserInfo>, val commentLike : ArrayList<ReviewLike>) : Serializable{
     constructor() : this(arrayListOf(),arrayListOf(),arrayListOf())
 }
 
 
-data class ReviewLike(var like : Boolean){
+data class ReviewLike(var like : Boolean) : Serializable{
     constructor() : this(false)
 }
 //칼럼 정보
@@ -135,8 +158,8 @@ data class ColumnInfo(val columnImage:String, val columnTitle:String, val column
     constructor() : this("","",0,0, arrayListOf())
 }
 //유저 제품 평가 데이터
-data class UserRatingData(var prodName:String, var ratingPoint : Float, var reviewComment : String, var wishBool:Boolean,var reviewDate : Long) : Serializable {
-    constructor() : this("",0f,"",false,0)
+data class UserRatingData(var prodName:String, var ratingPoint : Float, var reviewComment : String, var wishBool:Boolean,var reviewDate : Long, var profileOpen : Boolean) : Serializable {
+    constructor() : this("",0f,"",false,0,true)
 }
 data class UserWishDataList(var prodName : String, var prodCompany : String,var prodImageUrl:String,var time : Long){//유저 위시리스트 등록 데이터
 constructor() : this("","","",0L)
