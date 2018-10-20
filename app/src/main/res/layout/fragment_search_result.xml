@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".View.BottomNavPage.Product.SearchResult.SearchResultFragment">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/rating_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:elevation="0dp"
+            android:id="@+id/toolbar_rating"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/searchResult"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <EditText
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:gravity="center_vertical"
+                android:id="@+id/searchText"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="15dp"
+                android:textColorHint="@color/gray5"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/search_rect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <requestFocus />
+            </EditText>
+            <ImageView
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <android.support.v7.widget.RecyclerView
+                tools:listitem="@layout/adapter_home_list"
+                android:id="@+id/searchProductList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:visibility="gone"
+                android:textSize="@dimen/emptyViewTextSize"
+                android:gravity="center"
+                android:text="태그 검색 결과가 없습니다."
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/progressBar"
+        tools:visibility="gone"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

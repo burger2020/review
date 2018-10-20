@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+	<title> 날짜 정보 객체 </title>
+	<script>
+		document.write("100점짜리 인생에 필요한것");
+		document.write("<hr>");
+
+		var _word = prompt("단어 입력","");
+		-word = _word.toUpperCase();
+		var tot = 0;
+		for( var i = 0 ; i < _word.length; i++){
+			var res = _word.charAt(i);
+			for(var j = 1; j <=26 ; j ++){
+				if(res == String.fromCharCode(j+64)){
+					tot = tot + j ;
+				}
+			}
+		}
+		document.write(tot);
+	</script>
+</head>
+<body>
+</body>
+</html>
